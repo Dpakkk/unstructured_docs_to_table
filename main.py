@@ -72,6 +72,6 @@ def extract_questions_from_docx(file_path, output_csv):
     print(f"Extracted {len(extracted_data)} entries and saved to {output_csv}")
 
 # Example usage
-input_docx = "YC_AWS_Slack_General_Chat.docx"  # Path to your DOCX file
-output_csv = "AWS_Slack_Questions_Extracted.csv"
+input_docx = "/Users/bikashpokharel/Downloads/YC_AWS_Slack_General_Chat.docx"
+output_csv = "/Users/bikashpokharel/Downloads/AWS_Slack_Questions_Extracted.csv"
 extract_questions_from_docx(input_docx, output_csv)
