@@ -1,13 +1,15 @@
 import re
 import csv
 from datetime import datetime
-from docx import Document
+import pypandoc
 
 def extract_questions_from_docx(file_path, output_csv):
     """
     Extracts structured questions from a DOCX file and writes them to a CSV file.
     """
-    doc = Document(file_path)
+    text = pypandoc.convert_file(file_path, 'plain')
+    paragraphs = text.split("\n")  # Splitting text into lines to mimic paragraphs
+    
     extracted_data = []
     
     current_date = None
@@ -22,8 +24,8 @@ def extract_questions_from_docx(file_path, output_csv):
     reply_pattern = re.compile(r'(\d+)\srepl(?:y|ies)')
     yc_batch_pattern = re.compile(r'\bYC\s([A-Z]+\d{2})\b')
     
-    for para in doc.paragraphs:
-        text = para.text.strip()
+    for text in paragraphs:
+        text = text.strip()
         
         if not text:
             continue
